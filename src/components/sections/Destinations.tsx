@@ -33,7 +33,7 @@ export default function Destinations() {
   const [activeIndex, setActiveIndex] = useState(0)
 
   return (
-    <section className={styles.destinations}>
+    <section className={styles.section}>
       <div className={styles.container}>
         <h2 className={styles.heading}>Discover Our Destinations</h2>
         <p className={styles.subheading}>Explore the world with Emirates</p>
@@ -53,6 +53,7 @@ export default function Destinations() {
           <button 
             onClick={() => setActiveIndex(prev => (prev > 0 ? prev - 1 : destinations.length - 1))}
             className={styles.controlButton}
+            aria-label="Previous destination"
           >
             &lt;
           </button>
@@ -60,14 +61,16 @@ export default function Destinations() {
             {destinations.map((_, index) => (
               <button
                 key={index}
-                className={`${styles.dot} ${index === activeIndex ? styles.active : ''}`}
+                className={`${styles.dot} ${index === activeIndex ? 'active' : ''}`}
                 onClick={() => setActiveIndex(index)}
+                aria-label={`Go to destination ${index + 1}`}
               />
             ))}
           </div>
           <button 
             onClick={() => setActiveIndex(prev => (prev < destinations.length - 1 ? prev + 1 : 0))}
             className={styles.controlButton}
+            aria-label="Next destination"
           >
             &gt;
           </button>

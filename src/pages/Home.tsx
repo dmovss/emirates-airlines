@@ -1,5 +1,4 @@
-// src/pages/Home.tsx
-import Destinations from '../components/sections/Destinations' // No .tsx extension
+import { Suspense } from 'react'
 import Hero from '../components/sections/Hero'
 import FlightSearch from '../components/sections/FlightSearch'
 import Destinations from '../components/sections/Destinations'
@@ -8,12 +7,13 @@ import SpecialOffers from '../components/sections/SpecialOffers'
 import Testimonials from '../components/sections/Testimonials'
 import AppPromo from '../components/sections/AppPromo'
 import Newsletter from '../components/sections/Newsletter'
+import LoadingSpinner from '../components/ui/LoadingSpinner'
 
 export default function Home() {
   return (
     <div className="home-page">
       <Suspense fallback={<LoadingSpinner />}>
-        <HeroSection />
+        <Hero />
         <FlightSearch />
         <Destinations />
         <WhyEmirates />

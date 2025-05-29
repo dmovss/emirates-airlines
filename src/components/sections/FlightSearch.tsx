@@ -18,7 +18,11 @@ export default function FlightSearch() {
   return (
     <section className={styles.flightSearch}>
       <div className={styles.container}>
-        <h2 className={styles.heading}>Find Your Flight</h2>
+        <div className={styles.searchTabs}>
+          <button className={styles.active}>Flights</button>
+          <button>Hotels</button>
+          <button>Cars</button>
+        </div>
         <Formik
           initialValues={{
             origin: '',
@@ -44,6 +48,9 @@ export default function FlightSearch() {
                     <option value="LHR">London (LHR)</option>
                     <option value="JFK">New York (JFK)</option>
                   </Field>
+                  {errors.origin && touched.origin && (
+                    <div className={styles.error}>{errors.origin}</div>
+                  )}
                 </div>
 
                 <div className={styles.formGroup}>
@@ -54,6 +61,9 @@ export default function FlightSearch() {
                     <option value="LHR">London (LHR)</option>
                     <option value="JFK">New York (JFK)</option>
                   </Field>
+                  {errors.destination && touched.destination && (
+                    <div className={styles.error}>{errors.destination}</div>
+                  )}
                 </div>
               </div>
 
@@ -65,48 +75,4 @@ export default function FlightSearch() {
                     type="date" 
                     className={styles.input}
                   />
-                </div>
-
-                <div className={styles.formGroup}>
-                  <label htmlFor="returnDate">Return</label>
-                  <Field 
-                    name="returnDate" 
-                    type="date" 
-                    className={styles.input}
-                  />
-                </div>
-              </div>
-
-              <div className={styles.formRow}>
-                <div className={styles.formGroup}>
-                  <label htmlFor="travelers">Travelers</label>
-                  <Field 
-                    name="travelers" 
-                    type="number" 
-                    min="1" 
-                    max="10"
-                    className={styles.input}
-                  />
-                </div>
-
-                <div className={styles.formGroup}>
-                  <label htmlFor="cabinClass">Class</label>
-                  <Field name="cabinClass" as="select" className={styles.select}>
-                    <option value="economy">Economy</option>
-                    <option value="premium">Premium Economy</option>
-                    <option value="business">Business Class</option>
-                    <option value="first">First Class</option>
-                  </Field>
-                </div>
-              </div>
-
-              <button type="submit" className={styles.submitButton}>
-                Search Flights
-              </button>
-            </Form>
-          )}
-        </Formik>
-      </div>
-    </section>
-  )
-}
+                  {errors.departureDate && touched.d
